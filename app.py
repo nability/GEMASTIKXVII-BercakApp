@@ -1,11 +1,14 @@
 from flask import Flask
 from flask_restful import Api
-import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 api = Api(app)
+
+app.config["SECRET_KEY"] = 'RahasiaKabupatenSukabumi'
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
 
 from routes import *
 
-if _name_ == "_main_":
-    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+if __name__ == "__main__":
+   app.run(debug=True)
